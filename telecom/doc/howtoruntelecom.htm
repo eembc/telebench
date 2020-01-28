@@ -1,0 +1,400 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./howtoruntelecom_files/filelist.xml">
+<title>How To Run Telecom</title>
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:green;}
+a:link, span.MsoHyperlink
+	{color:green;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:green;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+<meta name=Template content="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+</head>
+
+<body bgcolor=white lang=EN-US link=green vlink=purple style='tab-interval:
+.5in'>
+
+<div class=Section1>
+
+<p align=center style='text-align:center'><b><span style='font-size:13.5pt'>&quot;How
+To Run The Telecom Benchmarks&quot;</span></b></p>
+
+<p align=center style='text-align:center'><b><span style='font-size:13.5pt'>Release
+1.1.0</span></b></p>
+
+<p align=center style='text-align:center'><b><i><span style='font-size:13.5pt'>EEMBC
+TechTAG - Alan R. Weiss, Project Manager</span></i></b><i><o:p></o:p></i></p>
+
+<p><i>&nbsp;<o:p></o:p></i></p>
+
+<p><b><span style='font-size:13.5pt'>Overview of the 1.1.0 Release</span></b></p>
+
+<p>This Release includes a number of important defect corrections (a.k.a.
+&quot;bug fixes&quot;) that were deemed &quot;Must Fix&quot; by the Technical
+Advisory Group of EEMBC (TechTAG) as well as the Telecom Subcommittee of EEMBC.
+This release supercedes and replaces all previous releases, and no benchmark
+scores can be reported, certified, or published on a prior version.</p>
+
+<p><span style='font-size:13.5pt'>Changes from Release 1.0.4<o:p></o:p></span></p>
+
+<p style='margin-right:.5in;margin-left:.5in'>FFT datasets are now correct,
+including the verfication files.</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>FFT will now execute correctly on
+16-bit architectures.</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Bit Allocation will now execute
+properly through all of the loops.</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>The &quot;How To Run&quot;
+document has been improved, including defect corrections and additions to
+explain how to verify Telecom output.</p>
+
+<p>Numerous smaller defects were made that will not affect performance between
+Release 1.0.4 and 1.1.0 (this release), but were enabled to ease compilation
+concerns.</p>
+
+<p><span style='font-size:13.5pt'>Contributors to this Release<o:p></o:p></span></p>
+
+<p>The following people contributed development, testing, and verification time
+to this release:</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Alan R. Weiss - Project Lead,
+EEMBC Certification Laboratories, LLC (ECL)</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Russell Rivin - Analog Devices
+Inc.</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Alan Anderson - Analog Devices
+Inc.</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Yuval Ronen - Motorola</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Murali Venkat - Texas Instruments</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Richard Scales - Texas Instruments</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Sergei Larin - Billions of
+Instructions Per Second, Inc.</p>
+
+<p style='margin-right:.5in;margin-left:.5in'>Rick Foos - ECL</p>
+
+<p align=center style='text-align:center'><b><u>Part 1 - How To <i>Build</i>
+The Telecom Benchmarks<o:p></o:p></u></b></p>
+
+<p><b>&nbsp;<o:p></o:p></b></p>
+
+<p><b>Overview and Porting Tips<o:p></o:p></b></p>
+
+<p>The Telecom Subcommittee Benchmarks (TSB) for EEMBC are designed to be built
+and executed by encapsulating the data into the binary and having the output
+returned as uuencoded data. </p>
+
+<p>The developer is expected to modify the Adaptation Layer (al) directories of
+the Test Harness, and any related makefile operations needed for thier tools.
+Pay particular attention when porting to the x86 / Windows flags, the heap
+flag, the floating point flag, and the endian flag. Most benchmarks in EEMBC
+were first instantiated on a Windows machine for debugging and testing
+purposes. If you have questions on porting the Test Harness to your platform,
+contact the EEMBC Certification Laboratories (ECL) <a
+href="http://www.ebenchmarks.com">http://www.ebenchmarks.com</a> for primary
+support or for a quote on porting to your platform.</p>
+
+<p><b>A Note on Datasets<o:p></o:p></b></p>
+
+<p>The expected output is the output as generated on a standard x86 PC running
+Windows 98 or Windows NT 4.0 built with Visual C/C++ 6.0. Verification files
+are found in the datasets directory. In the Viterbi benchmark, verification
+filenames have the suffix &quot;ref.dat&quot;. For example, the reference file
+for input data gett is gettref.dat. Verification files for all other benchmarks
+have a prefix of &quot;v&quot;. For example, a benchmark initiated with
+&quot;cl rpul.dat&quot; will have a verification file of &quot;vpul.dat&quot;.</p>
+
+<p><b>A Note on Reporting of Scores<o:p></o:p></b></p>
+
+<p>The EEMBC website will be updated to include Signal to Noise Ratio fields.
+By vote of EEMBC, this must be reported for all Telecom benchmarks.</p>
+
+<p><b>A Note on the Format of These Instructions<o:p></o:p></b></p>
+
+<p>All of the TSB (Telecom Subcommittee Benchmarks) work the same. The difference
+is obviously the name of the benchmark itself and the datafiles.</p>
+
+<p>&nbsp;</p>
+
+<p align=center style='text-align:center'><b><u>Part 2 - How To <i>Run </i>Telecom
+Benchmarks<o:p></o:p></u></b></p>
+
+<p align=center style='text-align:center'><b><u>&nbsp;<o:p></o:p></u></b></p>
+
+<p><b>Important Note: The &quot;v&quot; files in the datasets are the
+VERIFICATION files. You don't execute them!<o:p></o:p></b></p>
+
+<p><b><u>Autocorrelation - UUENCODING Execution (TH Regular)<o:p></o:p></u></b></p>
+
+<p>Reminder: You must build and execute a separate binary for each datafile.</p>
+
+<p>Start the benchmark on the target by typing &quot;ac&quot; or however you
+downloaded the benchmark.</p>
+
+<p>Set the command line parameters prior to running each benchmark. Use the cl
+command:</p>
+
+<p><span style='font-family:"Courier New"'>cl rpulse.dat 8<o:p></o:p></span></p>
+
+<p>You do not use the input file name, as that is controlled by the DATA_n
+variable the file <span style='font-family:"Courier New"'>AutCor01.h.</span></p>
+
+<p>4. Enter the number of iterations using the &quot;n&quot; command. The
+default for this benchmark is 5000. It is up to you to execute the benchmark
+enough times to minimize the overhead associated with the Test Harness. ECL
+(the EEMBC Certification Laboratories) will use various iteration levels to
+double-check.</p>
+
+<p>To execute the benchmark type a &quot;g&quot;</p>
+
+<p>You must remember to capture the uuencoded output between each execution
+run. You will have to capture the output on the host side output window (e.g.
+Hyperterminal window or HCPC window) and save that into a file. You will then
+have to uudecode that file.</p>
+
+<p><br>
+The CL command for the other two tests are:</p>
+
+<p><span style='font-family:Courier'>cl rsine.dat 16<o:p></o:p></span></p>
+
+<p><span style='font-family:"Courier New"'>cl rspeech.dat 32<o:p></o:p></span></p>
+
+<p>Verification is by <span style='font-family:Courier'>diffmeasure</span>.</p>
+
+<p><b><u>Bit Allocation - UUENCODING Execution<o:p></o:p></u></b></p>
+
+<p>Reminder: You must build and execute a separate binary for each datafile.</p>
+
+<p>Start the benchmark on the target by typing &quot;ba&quot; or however you
+downloaded the benchmark.</p>
+
+<p>Set the command line parameters prior to running each benchmark. Use the cl
+command:</p>
+
+<p><span style='font-family:"Courier New"'>cl rstep.dat 120<o:p></o:p></span></p>
+
+<p>You do not use the input file name, as that is controlled by the DATA_n
+variable the file <span style='font-family:"Courier New"'>fBitAl00.h.</span></p>
+
+<p>4. Enter the number of iterations using the &quot;n&quot; command. The
+default for this benchmark is 25000. It is up to you to execute the benchmark
+enough times to minimize the overhead associated with the Test Harness. ECL
+(the EEMBC Certification Laboratories) will use various iteration levels to
+double-check.</p>
+
+<p>To execute the benchmark type a &quot;g&quot;</p>
+
+<p>You must remember to capture the uuencoded output between each execution
+run. You will have to capture the output on the host side output window (e.g.
+Hyperterminal window or HCPC window) and save that into a file. You will then
+have to uudecode that file.<br>
+<br>
+The CL command for the other two tests are:</p>
+
+<p><span style='font-family:Courier'>cl rpent.dat 500<o:p></o:p></span></p>
+
+<p><span style='font-family:"Courier New"'>cl rtyp.dat 1920<o:p></o:p></span></p>
+
+<p>Verification is by <span style='font-family:Courier'>diff.</span></p>
+
+<p><b><u>Convolutional Encoder - UUENCODING Execution<o:p></o:p></u></b></p>
+
+<p>Reminder: You must build and execute a separate binary for each datafile.</p>
+
+<p>Start the benchmark on the target by typing &quot;ce&quot; or however you
+downloaded the benchmark.</p>
+
+<p>Set the command line parameters prior to running each benchmark. Use the cl
+command:</p>
+
+<p><span style='font-family:"Courier New"'>cl rk3r2.dat 1<o:p></o:p></span></p>
+
+<p>You do not use the input file name, as that is controlled by the DATA_n
+variable the file <span style='font-family:"Courier New"'>ConvEn00.h.</span></p>
+
+<p>4. Enter the number of iterations using the &quot;n&quot; command. The
+default for this benchmark is 5000. It is up to you to execute the benchmark enough
+times to minimize the overhead associated with the Test Harness. ECL (the EEMBC
+Certification Laboratories) will use various iteration levels to double-check.</p>
+
+<p>To execute the benchmark type a &quot;g&quot;</p>
+
+<p>You must remember to capture the uuencoded output between each execution
+run. You will have to capture the output on the host side output window (e.g.
+Hyperterminal window or HCPC window) and save that into a file. You will then
+have to uudecode that file.</p>
+
+<p><br>
+The CL command for the other two tests are:</p>
+
+<p><span style='font-family:"Courier New"'>cl rk4r2.dat 2<o:p></o:p></span></p>
+
+<p><span style='font-family:"Courier New"'><br>
+cl rk5r2.dat 3<o:p></o:p></span></p>
+
+<p>Verification is by <span style='font-family:Courier'>diff.</span></p>
+
+<p><b><u>Fast Fourier Transform - UUENCODING Execution<o:p></o:p></u></b></p>
+
+<p>Start the benchmark on the target by typing &quot;fft&quot; or however you
+downloaded the benchmark.</p>
+
+<p>Reminder: You must build and execute a separate binary for each datafile.</p>
+
+<p>Set the command line parameters prior to running each benchmark. Use the cl
+command:</p>
+
+<p><span style='font-family:"Courier New"'>cl rpul.dat f<o:p></o:p></span></p>
+
+<p>You do not use the input file name, as that is controlled by the DATA_n
+variable the file <span style='font-family:"Courier New"'>FFT00.h.</span></p>
+
+<p>4. Enter the number of iterations using the &quot;n&quot; command. The
+default for this benchmark is 1000. It is up to you to execute the benchmark
+enough times to minimize the overhead associated with the Test Harness. ECL
+(the EEMBC Certification Laboratories) will use various iteration levels to
+double-check.</p>
+
+<p>To execute the benchmark type a &quot;g&quot;</p>
+
+<p>You must remember to capture the uuencoded output between each execution
+run. You will have to capture the output on the host side output window (e.g.
+Hyperterminal window or HCPC window) and save that into a file. You will then
+have to uudecode that file.</p>
+
+<p><br>
+The CL command for the other two tests are:</p>
+
+<p><span style='font-family:"Courier New"'>cl rsin.dat f<o:p></o:p></span></p>
+
+<p><span style='font-family:"Courier New"'><br>
+cl rspn.dat f<o:p></o:p></span></p>
+
+<p>Verification is by <span style='font-family:Courier'>diffmeasure</span>. How
+you do this is as follows:</p>
+
+<p><span style='font-family:"Courier New"'>diffmeasure &lt;output_file&gt;
+&lt;verification_file&gt;<o:p></o:p></span></p>
+
+<p>The verification files are called:</p>
+
+<p><span style='font-family:"Courier New"'>vsine256t</span> - This is
+associated with the xsine256 data files.</p>
+
+<p><span style='font-family:"Courier New"'>vspn256</span> - This is associated
+with the xspn256 datafiles.</p>
+
+<p><span style='font-family:"Courier New"'>vtpulse256</span> - This is
+associated with the xtpulse256 datafiles.</p>
+
+<p>The program <span style='font-family:"Courier New"'>gen.exe</span> was used
+to create the floating point verification files on an x86 PC.</p>
+
+<p><b><u>Viterbi Decoder - UUENCODING Execution<o:p></o:p></u></b></p>
+
+<p>Reminder: You must build and execute a separate binary for each datafile.</p>
+
+<p>Start the benchmark on the target by typing &quot;vd&quot; or however you
+downloaded the benchmark.</p>
+
+<p>Set the command line parameters prior to running each benchmark. Use the cl
+command:</p>
+
+<p><span style='font-family:"Courier New"'>cl rgeti.dat 1<o:p></o:p></span></p>
+
+<p>You do not use the input file name, as that is controlled by the DATA_n
+variable the file <span style='font-family:"Courier New"'>Viterb00.h.</span></p>
+
+<p>4. Enter the number of iterations using the &quot;n&quot; command. The
+default for this benchmark is 3000. It is up to you to execute the benchmark
+enough times to minimize the overhead associated with the Test Harness. ECL
+(the EEMBC Certification Laboratories) will use various iteration levels to
+double-check.</p>
+
+<p>To execute the benchmark type a &quot;g&quot;</p>
+
+<p>You must remember to capture the uuencoded output between each execution
+run. You will have to capture the output on the host side output window (e.g.
+Hyperterminal window or HCPC window) and save that into a file. You will then
+have to uudecode that file.</p>
+
+<p><br>
+The CL command for the other two tests are:</p>
+
+<p><span style='font-family:"Courier New"'>cl ronest.dat 2<o:p></o:p></span></p>
+
+<p><span style='font-family:"Courier New"'>cl rtogglet.dat 3<o:p></o:p></span></p>
+
+<p><span style='font-family:"Courier New"'>cl rzerost.dat 4<o:p></o:p></span></p>
+
+<p>Verification is by <span style='font-family:Courier'>diffmeasure</span>. The
+reference files for Viterbi all end in <span style='font-family:"Courier New"'>ref</span>.
+In other words, the <span style='font-family:"Courier New"'>gettref.dat</span>
+file is associated with the <span style='font-family:"Courier New"'>gett</span>
+input datafile.</p>
+
+<p>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

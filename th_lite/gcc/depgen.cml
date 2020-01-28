@@ -1,0 +1,41 @@
+#==============================================================================
+#$RCSfile: depgen.cml,v $
+#
+#   DESC : Generate Harness AL dependancies for gcc
+#
+# AUTHOR : Rick Foos, ECL, LLC
+#
+#  EEMBC : Technical Advisory Group (TechTAG)
+#
+#    CVS : $Revision: 1.1 $
+#------------------------------------------------------------------------------
+# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
+# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
+#==============================================================================
+
+## Built from Application Root (../th_lite/src,../th_lite/$(TOOLCHAIN)/al)
+# Harness Library Build
+
+
+# Applies to harness
+-tf ../th_lite/gcc/harness.mak
+-b $(OBJ)
+-o $(OBJBUILD)
+-r "$(COM)"
+-co $(OBJOUT)
+-to $(OBJBUILD)
+-tb $(LITE)$(LIBTYPE)
+-tr "$(LIBRARY)"
+-ce $(LIBOUT)
+
+# The Lite Harness
+-t thobjs
+-I../th_lite/x86/al
+-I../th_lite/src
+-I.
+
+../th_lite/x86/al/*.c
+../th_lite/src/*.c
+
+-td  # dump the th Lite thobjs, 
+

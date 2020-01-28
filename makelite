@@ -1,0 +1,22 @@
+#!/bin/sh
+# ==============================================================================
+# $RCSfile: makelite,v $
+# 
+#    DESC : TH Lite Clean,Build,Run on gcc with Consolidated Log
+# 
+#  AUTHOR : Rick Foos, ECL, LLC 
+# 
+#     CVS : $Revision: 1.9 $
+# ------------------------------------------------------------------------------
+#  Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
+#  Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
+# ==============================================================================
+# For each TOOLCHAIN
+make VER=$VER TOOLCHAIN=gcc LITE=_lite $1
+if [ ! -e ../gcc_time${VER}_lite.log ]; then
+cat ../util/awk/titletime.txt >../gcc_time${VER}_lite.log
+fi
+if [ -e gcc_time${VER}_lite.log ]; then
+cat gcc_time${VER}_lite.log >>../gcc_time${VER}_lite.log
+fi
+

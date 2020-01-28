@@ -1,0 +1,349 @@
+<HTML>
+<HEAD>
+<TITLE>makerule.pl - generates make file rules for C,C++, and 
+              assembly language files with # comments.</TITLE>
+<LINK REV="made" HREF="mailto:gp@familiehaase.de">
+</HEAD>
+
+<BODY>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<UL>
+
+		<LI><A HREF="#using makerule">Using MAKERULE</A></LI>
+		<LI><A HREF="#important notes">Important Notes</A></LI>
+		<LI><A HREF="#command files">Command Files</A></LI>
+	</UL>
+
+	<LI><A HREF="#rationale">RATIONALE</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#todo">TODO</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<HR>
+<H1><A NAME="name">NAME</A></H1>
+<P>makerule.pl - generates make file rules (dependancy info) for C,C++, and 
+              assembly language files with # comments.</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P>makerule &lt;switches&gt; &lt;file specs&gt;</P>
+<PRE>
+    -?                    Dump usage help then exit ( -help also works)
+    -I    &lt;directory&gt;     adds a directory to MAKERULE's include path
+    -ix                   clear's (empties) MAKERULE's include path
+    -p    &lt;env variable&gt;  Adds the contents of an environment variable
+                          to MAKERULE's include path.  For example, when using
+                          Microsoft compilers, the INCLUDE environment
+                          variable contains the include path used by the
+                          compiler.  Just use the -p switch to use it.
+    -v                    Turns on the verbose flag. Turn verbose mode on
+                          enabled on all kinds of messages.  Just try it.
+                          Also, turning on the vebose flag turns the
+                          quiet flag off.
+    -v-                   Turns verbose mode off
+    -q                    Enables quiet mode.  When being quiet, MAKERULE
+                          only prints errors to STDERR.  Turning quiet mode
+                          on implies that the verbose mode is turned off
+    -q-                   Turns the quiet mode off
+    -a                    Enables the processing of '#include &lt;stdlib.h&gt;'
+                          include statements.  Normaly, MAKERULE ignores
+                          'angle' include statements.
+    -a-                   Turns off processing angle-bracket include statments
+    -cq                   Places double quotes around obj or exe output files.
+    -cq-                  Disables quoting.
+    -co &lt;obj output&gt;      Enables generation of object file output statememts
+                          in the rule generation. Used for compilers that do not support
+                          $* directives. The obj output string is used to identify the output.
+                          It is usually -o, but for VC++ it is -Fo. If using VC++ from gnu make,
+                          the quoted string option should also be enabled -q.
+    -cox                  Disables generation of object file output statements.
+    -ce &lt;exe output&gt;      Enables generation of executable file output statememts
+                          in the rule generation. Used for compilers that do not support
+                          $* directives. The obj output string is used to identify the output.
+                          It is usually -o. If using VC++ from gnu make,
+                          the quoted string option should also be enabled -q.
+    -cex                  Disables generation of executable file output statements.
+    -r &lt;recipe&gt;           Sets the recipe to be placed after each rule.
+                          NOTE: the recipe will have the dependant file appended, so
+                          $* extensions are not needed.
+    -rx                   Clears the current recipe.
+    -tr &lt;recipe&gt;          Sets the recipe to be placed after each target rule.
+                          NOTE: the recipe will have the dependant file appended, so
+                          $^ extensions are not needed.
+    -trx                  Clears the current target recipe.
+    -ta &lt;dependancy)       Adds additional dependancy to target. For example,
+                          $(THOBJS) so that harness is built with benchmark.
+    -tax                  clears the additional dependancy targets.
+    -ta &lt;dependancy)      Adds additional dependancy to the end of the
+                          target.  For example, $(THOBJS) so that harness is built with
+                          benchmark.
+    -tax                  clears the additional dependancy targets.
+    -te &lt;library)         Adds additional dependancy library to the end of the
+                          target rule.  For example, $(THLIB) so that harness is linked as
+                          a library, with $(THOBJS) as a dependancy list.
+    -tex                  clears the additional dependancy library.
+    -b &lt;extension&gt;        Sets the file extension of the target file
+                          in the generated rules.  For example '-b .obj'
+                          or '-b .o'.  The default is '.obj'
+    -tb &lt;extension&gt;       Sets the file extension of the target executable file
+                          in the generated rules.  For example '-tb .exe'
+                          or '-tb .lib'.  The default is ''.
+    -o &lt;directory&gt;        Sets the target directory used to generate each
+                          rule.  For example, on NT systems it is common
+                          to put objects in a 'debug' or 'release'
+                          subdirectory.  Using '-o debug' cause targets such
+                          as 'debug/foo.obj : foo.c' to be generated.  The
+                          default is an empty string.
+    -ox                   Clears the current target directory
+    -to &lt;directory&gt;       Sets the target executable directory used to generate each
+                          rule.  For example, it is common
+                          to put executables in a bin directory
+                          Using '-to bin' cause targets such
+                          as 'bin/foos.exe : foos.o' to be generated.  The
+                          default is an empty string.
+    -tox                  Clears the current target executable directory
+    -g &lt;file name&gt;        Ignore the specified include, or source file.  If 
+                          MAKERULE see's this file, it will be ignored.
+                          You can have as many -g switches as you like.
+                          MAKERULE keeps a list of files to ignore.
+    -g- &lt;file name&gt;       Remove the file name from the ignore list
+    -gx                   Clear the entire ignore file list
+    -j &lt;regular expression&gt; Ignore the specified incldue file. If MAKERULE
+                          see's this include file, it will be ignored.
+                          You can have as many -j switches as you like.
+                          MAKERULE keeps a list of include files to ignore
+    -j- &lt;regular expression&gt; Remove the regular expression from the ignore list
+    -jx                   Clear the entire ignore regular expression file list.
+    -w  &lt;directory&gt;       Ignore the specified include directory.  MAKERULE
+                          will NOT search this directory for include files.
+                          You can have as many -w switches as you like.
+                          MAKERULE keeps a list of directories to ignore
+    -w- &lt;directory&gt;       Removes the directory from the ignore list.
+    -wx                   Clears the ignore directories list.
+    -m &lt;number&gt;           Sets the right hand margin.  This defaults to
+                          80 but you can set it is small as 60 (which is
+                          the minimum).
+    -s                    Turns the STRICT flag on.  When STRICT is set, then
+                          MAKERULE exits with an error if it can't find
+                          an include file, or if a directory on the
+                          include path does not exist.
+    -s-                   Turns strict mode OFF.
+    -t                    Sets the current target.  If there is a current
+                          target, then all object file's are associated with
+                          only that target
+    -t-                   Clears the current target
+    -tx                   Clears the target list
+    -td                   Dumps the object file list for the current target
+                          and clears the current target.
+    -tdx                  Dumps the object file list for the current target
+                          and clears the ALL targets. (used to handle duplicate
+                          target names in the harness).
+    -tf &lt;filename&gt;        Dumps the current target to the specified file.
+    -tfx                  Resets the output file name to STDOUT.
+    -cmd &lt;cmdfile&gt;        Gets more command line arguments from the 'cmdfile'
+                          Command files can be nested</PRE>
+<PRE>
+    -debug                Turns on DEBUG mode.  This also turns on verbose
+                          mode.  If you have problems figuring out what
+                          MAKERULE is doing, then turn on the debug mode.
+                          You may wan't to redirect stderr to a file so you
+                          can read all of it.  Under the korn shell this is
+                          done like this 'makerule 2&gt; err &gt;makerule.dep'
+                          The rules go to the file 'makerule.dep' and all the
+                          output to STDERR goes to the file 'err'.</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>MAKERULE automagically generates dependancy rules for C, C++ and
+assembly language files using #include.  These rules can then be
+included in a make file.</P>
+<P>MAKERULE needs to basic pieces of information:</P>
+<PRE>
+   #1 A list of source files to scan
+   #2 A list of include directories in which to look for
+      include files.</PRE>
+<P>Given this simple information, MAKERULE will generate rules like this:</P>
+<PRE>
+    obj/app.obj : ../xvutil/assert.h ../platform/am186/DEF186.H                    \
+                  ../platform/am186/in186.h ../platform/am186/tmr186.h             \
+                  ../platform/am186/am186leds.h ../platform/am186/am186ser.h       \
+                  ../platform/pio.h ../common/compiler.h                           \
+                  ../platform/am186/printf.h ../common/stdinc.h                    \
+                  C:/MSVC/INCLUDE/stddef.h ../platform/am186/ptypes.h              \
+                  ../common/serialx.h ../common/serial.H C:/MSVC/INCLUDE/stdarg.h  \
+                  ../common/printfe.h
+    obj/app.obj : ../app/app.c
+            $(COM) ../app/app.c</PRE>
+<PRE>
+        APP = \
+                app.obj</PRE>
+<PRE>
+    app:
+    app.exe : app.obj
+        $(CC) -o $(APP) app.exe</PRE>
+<PRE>
+    targets:: app</PRE>
+<P>MAKERULE generates human readable output which can be directly included
+in a make file.</P>
+<P>
+<H2><A NAME="using makerule">Using MAKERULE</A></H2>
+<P>Makerule generates makerules for object files and executable targets. 
+Multiple targets are supported.  The normal operation is to define a
+target, and a set of source files.  At the end of each target, the
+object files processed will be placed in a make variable, and an
+execuaable line built.</P>
+<P>At the end of processing, a list of the generated targets will be
+placed in a target rule (target:: t1...tn).</P>
+<P>MAKERULE must be run from the same directory that you run your make
+file.  This is because MAKERULE puts full or relative path names in its
+output.  If you don't run them from the same directory, then make won't
+look in the right places.</P>
+<P>#2 Makerule is controlled by command line arguments and switches.  All
+'unswitched' arguments are taken to be either directories or file
+names.  They can contain wild cards.  For example '*.c' or '*.cpp'.</P>
+<P>Switches that require arguments may be followed by a space such as</P>
+<PRE>
+    -I c:\msvc\include</PRE>
+<P>or, you can stick the together like this:</P>
+<PRE>
+    -Ic:\msvc\include.</PRE>
+<P>Both the above examples add the 'c:\msvc\include' directory to MAKERULE's
+include path.</P>
+<P>Note that all command line arguments are <EM>NOT</EM> case sensitive.  I hate
+case sentitive command line switches.  So '-I' and '-i' are handled the
+same way.</P>
+<P>A simple makerule execution might look like this:</P>
+<PRE>
+    makerule -I c:\msvc\include *.c &gt; deps.mak</PRE>
+<P>This simple command will generate a set of rules for all the C files
+in the current directory.  Note that the output goes to STDOUT which,
+in this case, is redirected to the file 'deps.mak'.</P>
+<P>The key thing to remember about MAKERULE is that it processes the command
+line in order from left to right.  So, put -I switches before file specs.</P>
+<P>
+<H2><A NAME="important notes">Important Notes</A></H2>
+<P>By default MAKERULE makes a best effort at findign all the include file
+dependanices.  However, there are a few things you should know.</P>
+<P>#1  By default, MAKERULE ignores #include &lt;....&gt; statements.  MAKERULE
+    assumes that angle-bracket includes are only used for libraries such
+    as the standard library, or other libraries.  e.g. they are used
+    for code that you will NOT be changing during development.</P>
+<PRE>
+    However, not all folks use angle-bracket includes this way.  So, if you
+    want to have MAKERULE search for include files specified using
+    angle-bracket includes, then use the '-a' switch.  Note that you can
+    turn this back off using the '-a-' switch.</PRE>
+<P>#2  By default, MAKERULE keeps going if it can't find an include file.  So,
+    if you have an #include ``foo.h'' and 'foo.h' cannot be found in the
+    source file's directory or in the include path, then MAKERULE just skips
+    this file and goes on.  E.g. it is not incldued as a dependancy in the
+    rule for the source file which tried ot include it.</P>
+<PRE>
+    This could happen for several reasons, most likely it will be an
+    legitimate include path issue.  For example, you might want to use the
+    '-a' switch to process angle-bracket include statements but you don't
+    want to include stuff from your compiler's standard library.  So you
+    will leave the compilers incldue directory (like 'C:\MSVC\INCLUDE' )
+    out of the include path MAKERULE uses to generate its rules.  This is
+    a perfectly fine thing to do.</PRE>
+<PRE>
+    BUT! If you want to makes sure MAKERULE doesn't miss anything then
+    turn on STRICT mode by using the '-s' switch.  WHen the stricit mode
+    is set, then MAKERULE will exit with an error if it can't find a
+    specified directory, source file or include file.</PRE>
+<P>#3  Sometimes you <EM>want</EM> MAKERULE to ignore header files, even if you
+    have strict mode enabled.  The -g switch does this.  '-g &lt;fn&gt;' adds
+    a file name to a list of files to ignore. '-g- &lt;fn&gt;' removes a file
+    name from the ignore list.  '-gx' clears the entire ignore file list.</P>
+<P>#3  Sometimes you <EM>want</EM> MAKERULE to ignore certain directories in
+    the include path.  For example, a setup shell script (or batch file)
+    may setup an INCLUDE environment variable.  You would like to use it,
+    but there is one directory in the compiler's path that you don't want
+    to search.  The -w switch does this.  This switch can also be used
+    to ignore directories that do not exist, thus by-passing the strict
+    mode check for that include directory.  '-w &lt;dn&gt;' adds a directory
+    to a list of include directories to ignore. '-w- &lt;dn&gt;' removes directory
+    name from the ignore list.  '-wx' clears the entire ignore directory list.</P>
+<P>
+<H2><A NAME="command files">Command Files</A></H2>
+<P>What would a utility be if it couldn't be run from a command file??? Of course
+MAKERULE can read command line arguments from a command file.  Just put a
+@&lt;filename&gt; on the makerule command line. There can be more than one and
+command files can be nested.  There is no limit to the nesting level.</P>
+<P>By convention, I name command files using a '.cml' extension.  MAKERULE
+doesn't care though.</P>
+<P>Command files can also contain comments.  These are comments just like in
+a makfile.  Everything between a '#' and the end of the line is a comment.</P>
+<P>Here is an example MAKERULE command file:</P>
+<PRE>
+      # MAKERULE Command File
+      #
+      # This entire file is tokenized and logically inserted into the command
+      # line where the @ character is</PRE>
+<PRE>
+      -a             # include #include &lt;...&gt; statements
+      -o obj/        # targets go in the obj directory</PRE>
+<PRE>
+      # use this include directories.
+      #
+      -I C:/rogue/workspaces/WINNT4/MSVC50/8s
+      -I c:/coding/am186tpl/common
+      -I c:/coding/am186tpl/xvkernel</PRE>
+<PRE>
+      -P INCLUDE       # also include the INCLUDE path in the environment</PRE>
+<PRE>
+      -r &quot;$(COM)&quot;      # C files are built with this recipe</PRE>
+<PRE>
+      source\*.c       # build all the files in the source directory</PRE>
+<PRE>
+      -ix              # clear the include path
+      -i source        # asm files don't need a fancy include path
+      -r &quot;$(ASM) &quot;     # use this recipe to build ASM files
+      source/*.asm     # build all the ASM files MAKERULE can find</PRE>
+<P>
+<HR>
+<H1><A NAME="rationale">RATIONALE</A></H1>
+<P>March, 2002:	Rick Foos.
+After reviewing makedeps, gcc -M, and autoconf the dependancy generation
+was not adequate for the range of tool chains to be supported.</P>
+<P>Makerule was enhanced to perform this function.</P>
+<P>August, 1998:</P>
+<P>I wrote MAKERULE to help me maintain make files.  I like GUI development
+environments like Microsoft's Visual C++ and Borland's (now Inprise) C++.
+I use them almost every day.  They keep track of the header files (and
+other files) which each C or C++ file includes.</P>
+<P>However, I do a lot of embedded systems programming.  These tools and
+projects are often best built using a make file executed from the command
+line.  I just got sick to death of maintaining rules like:</P>
+<PRE>
+   tcpip.obj : tcpip.c tcpip.h udp.h arp.h</PRE>
+<P>So, there you have it.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Rick Foos <A HREF="mailto:rickf@ebenchmarks.com">rickf@ebenchmarks.com</A></P>
+<P>Richard G Russell <A HREF="mailto:richard.russell@amd.com">richard.russell@amd.com</A></P>
+<P>
+<HR>
+<H1><A NAME="todo">TODO</A></H1>
+<P>* Use File::Find to locate files.</P>
+<P>* Use GetLongOptions to parse. Will need to replace streaming the cml file in
+  through ARGV to do it.</P>
+<P>* Use a better C comment parser, or -M option in modern compilers.</P>
+<P>* allow multi-line recipes to be placed in MAKERULE command files.  I'll
+  probably use something like 'here' documents.</P>
+
+</BODY>
+
+</HTML>

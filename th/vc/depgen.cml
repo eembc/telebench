@@ -1,0 +1,42 @@
+#==============================================================================
+#$RCSfile: depgen.cml,v $
+#
+#   DESC : Makerule command file to generate Harness AL dependancies
+#
+# AUTHOR : Rick Foos, ECL, LLC
+#
+#  EEMBC : Technical Advisory Group (TechTAG)
+#
+#    CVS : $Revision: 1.3 $
+#------------------------------------------------------------------------------
+# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
+# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
+#==============================================================================
+
+## Built from Application Root (th/src,th/$(TOOLCHAIN)/al)
+# Harness Library Build
+
+
+# Applies to harness
+-cq
+-tf ../th/vc/harness.mak
+-b $(OBJ)
+-o $(OBJBUILD)
+-r "$(COM)"
+-co $(OBJOUT)
+-to $(OBJBUILD)
+-tb $(LITE)$(LIBTYPE)
+-tr "$(LIBRARY)"
+-ce $(LIBOUT)
+
+# The Regular Harness
+-t thobjs
+-I../th/x86/al
+-I../th/src
+-I.
+
+../th/x86/al/*.c
+../th/src/*.c
+
+-td  # dump the th regular thobjs, 
+

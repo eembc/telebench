@@ -1,0 +1,15 @@
+#!/bin/sh
+# ==============================================================================
+# $RCSfile: makeall,v $
+# 
+#    DESC : Clean build and run with gcc with Consolidated log file
+# 
+#  AUTHOR : Rick Foos, ECL, LLC 
+# 
+#     CVS : $Revision: 1.4 $
+# ------------------------------------------------------------------------------
+#  Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
+#  Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
+# ==============================================================================
+../makereg $1
+../makelite $1

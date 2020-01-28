@@ -1,0 +1,31 @@
+#!/bin/sh
+#==============================================================================
+#$RCSfile: forall,v $
+#
+#   DESC : Run script on all applications, default techtag.
+#
+# AUTHOR : Rick Foos, ECL, LLC 
+#
+#    CVS : $Revision: 1.7 $
+#------------------------------------------------------------------------------
+# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
+# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
+#==============================================================================
+
+called=$1
+if [ -z "$called" ]; then 
+called="techtag.sh"
+fi
+# top level section
+if [ $called = "techtag.sh" ]; then
+cvs -Q checkout -PAd th eembc2/techtag/th
+cvs -Q checkout -PAd th_lite eembc2/techtag/th_lite
+cvs -Q checkout -PAd util eembc2/techtag/util
+fi
+
+applications="8_16-bit automotive consumer networking office telecom"
+
+for i in $applications; do 
+cd $i;../$called $2;cd ..
+done
+
