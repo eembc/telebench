@@ -1,17 +1,11 @@
-#==============================================================================
-#$RCSfile: runx86.mak,v $
+# ============================================================================
 #
-#   DESC : Run Each Benchmark from Host
+# Copyright (C) EEMBC(R) All Rights Reserved
 #
-# AUTHOR : Rick Foos, ECL, LLC
+# This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+# Please refer to the license file (LICENSE.md) included with this code.
 #
-#  EEMBC : Telecom
-#
-#    CVS : $Revision: 1.4 $
-#------------------------------------------------------------------------------
-# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
-# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
-#==============================================================================
+# ============================================================================
 
 run:: run_viterb00 run_fft00 run_fbital00 run_empty run_conven00 run_autcor00
 

@@ -1,17 +1,11 @@
-#==============================================================================
-#$RCSfile: depgen_gcc.cml,v $
+# ============================================================================
 #
-#   DESC : Generate Benchmark dependancies for GCC
+# Copyright (C) EEMBC(R) All Rights Reserved
 #
-# AUTHOR : Rick Foos, ECL, LLC
+# This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+# Please refer to the license file (LICENSE.md) included with this code.
 #
-#  EEMBC : Telecom Subcommittee
-#
-#    CVS : $Revision: 1.2 $
-#------------------------------------------------------------------------------
-# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
-# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
-#==============================================================================
+# ============================================================================
 
 # ignore test harness includes in benchmark source
 # so we can do both th and th_lite seperately from a makefile.

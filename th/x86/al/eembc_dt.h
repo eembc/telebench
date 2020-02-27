@@ -1,89 +1,11 @@
-/*==============================================================================
- *$RCSfile: eembc_dt.h,v $
+/**
  *
- *   DESC : Standard Include file, Defines all EEMBC common types and constants
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- * AUTHOR : ECL, LLC
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- *  EEMBC : Technical Advisory Group (TechTAG)
- *
- *    CVS : $Revision: 1.10 $
- *          $Date: 2002/07/26 20:52:55 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/techtag/th/x86/al/eembc_dt.h,v $
- *          
- *   NOTE : The typedefs in this file are typed to be the same size
- *          on all targets.  But note that this does not guarantee
- *          that structurs defined with these types will have the same
- *          size or that structure members will be at the same offset.
- *          This is due to alignment requirements of the target processor.
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: eembc_dt.h,v $
- * Revision 1.10  2002/07/26 20:52:55  rick
- * Add harness.h for Application overrides
- *
- * Revision 1.9  2002/07/17 17:47:12  rick
- * Fix Heap warnings
- *
- * Revision 1.8  2002/07/11 22:50:28  rick
- * Fix lite Heap init, tcdef results init, and stig's suggestions
- *
- * Revision 1.7  2002/04/23 21:16:09  rick
- * Bug #124: printf formatting in report_info
- *
- * Revision 1.6  2002/04/23 18:33:56  rick
- * Match eembc_dt with Lite, remove stdinc.h
- *
- * Revision 1.5  2002/04/02 17:06:27  administrator
- * Remove whitespace before # directives
- *
- * Revision 1.4  2002/03/22 18:48:41  rick
- * Add roundup macro at same place in lite eembc_dt.h
- *
- * Revision 1.3  2002/03/21 22:31:08  rick
- * Network Harness, and empty benchmark fixes
- *
- *
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 #if	!defined(EEMBC_DT_H)
 #define EEMBC_DT_H

@@ -1,97 +1,11 @@
-/*==============================================================================
- *$RCSfile: bmark.c,v $
+/**
  *
- *   DESC : TH Regular Test Harness routines for benchmarks
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- * AUTHOR : Rick Foos, ECL, LLC
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- *  EEMBC : Technical Advisory Group (TechTAG)
- *
- *    CVS : $Revision: 1.13 $
- *          $Date: 2002/08/12 20:23:06 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/techtag/empty/bmark.c,v $
- *          
- * NOTE   : Since benchmarks can be entered (run) multiple times, the benchmark
- *          MUST NOT depend on global data being initialized.  E.g. it must
- *          complelty initialize itself EVERY TIME its t_run_test() function
- *          is called.
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: bmark.c,v $
- * Revision 1.13  2002/08/12 20:23:06  rick
- * Fix have_malloc compile_out_heap conflict
- *
- * Revision 1.12  2002/08/09 00:01:55  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.11  2002/08/07 22:21:09  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.10  2002/08/06 21:59:04  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.9  2002/07/26 22:21:33  rick
- * If no heap, Compile out th_malloc call.
- *
- * Revision 1.8  2002/07/22 16:10:12  rick
- * Fix iteration dependant NI CRC
- *
- * Revision 1.7  2002/05/29 22:12:37  rick
- * Set recommended iterations with make
- *
- * Revision 1.6  2002/05/23 20:22:36  rick
- * Clear ansi warnings
- *
- * Revision 1.5  2002/04/25 23:20:30  rick
- * Cleanup after bug database scrub
- *
- * Revision 1.4  2002/04/12 21:30:47  rick
- * Make Lite more consistent with Regular
- *
- * Revision 1.3  2002/03/20 23:19:26  rick
- * Empty Benchmarks
- *
- *
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 /*******************************************************************************
     Includes                                                                    

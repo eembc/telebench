@@ -1,17 +1,11 @@
-#==============================================================================
-#$RCSfile: makefile,v $
+# ============================================================================
 #
-#   DESC : Application Level Make
+# Copyright (C) EEMBC(R) All Rights Reserved
 #
-# AUTHOR : Rick Foos, ECL, LLC
+# This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+# Please refer to the license file (LICENSE.md) included with this code.
 #
-#  EEMBC : Technical Advisory Group (TechTAG)
-#
-#    CVS : $Revision: 1.38 $
-#------------------------------------------------------------------------------
-# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
-# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
-#==============================================================================
+# ============================================================================
 
 # Following variable defines key for TH Regular LITE= , or TH Lite LITE=$(THLITE)
 LITE	=

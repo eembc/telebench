@@ -1,102 +1,11 @@
-/*==============================================================================
- *$RCSfile: bmark.c,v $
+/**
  *
- *   DESC : This file contains the Test Main and other TH support functions
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- * AUTHOR : RP
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- *  EEMBC : Telecom Subcommittee 
- *
- *    CVS : $Revision: 1.14 $
- *          $Date: 2002/09/23 15:30:50 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/telecom/conven00/bmark.c,v $
- *          
- * NOTE   :
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: bmark.c,v $
- * Revision 1.14  2002/09/23 15:30:50  rick
- * Remove incomplete INTERMED define
- *
- * Revision 1.13  2002/08/09 21:46:37  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.12  2002/07/24 15:56:48  rick
- * Unique keys for all benchmarks, and generate tab delimited log files with column headers.
- *
- * Revision 1.11  2002/07/17 17:44:29  rick
- * Key outputdata files based on input filename
- *
- * Revision 1.10  2002/05/29 22:26:45  rick
- * Set recommended iterations with make
- *
- * Revision 1.9  2002/05/23 20:22:34  rick
- * Clear ansi warnings
- *
- * Revision 1.8  2002/05/13 20:26:03  rick
- * Fix missing shifts in 16, and 32 bit CRC
- *
- * Revision 1.7  2002/04/26 19:22:50  rick
- * Add crc for DATA 1,2. Add BMDEBUG printing.
- *
- * Revision 1.6  2002/04/23 22:21:26  rick
- * Bug #129: Spelling errors
- *
- * Revision 1.5  2002/04/01 20:51:29  administrator
- * Apply Standard Comment Block
- *
- * Revision 1.4  2002/03/23 00:51:47  rick
- * Visual C++ Build fixes
- *
- * Revision 1.3  2002/03/11 22:11:51  rick
- * ITERATIONS, CRC_CHECK, NON_INTRUSIVE TCDef Usage
- *
- * Revision 1.2  2002/02/23 22:20:03  rick
- * patrick fixes
- *
- * Revision 1.1  2002/02/19 00:44:26  rick
- * Add/Remove files from build test
- *
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 #include "algo.h"
 #include "therror.h"

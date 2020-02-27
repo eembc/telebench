@@ -1,20 +1,11 @@
-#==============================================================================
-#$RCSfile: gcc.mak,v $
+# ============================================================================
 #
-#   DESC : GCC Tool Definition, Host Compile and Run
+# Copyright (C) EEMBC(R) All Rights Reserved
 #
-# AUTHOR : Rick Foos, ECL, LLC
+# This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+# Please refer to the license file (LICENSE.md) included with this code.
 #
-#  EEMBC : Technical Advisory Group (TechTAG)
-#
-#    CVS : $Revision: 1.4 $
-#------------------------------------------------------------------------------
-# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
-# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
-#==============================================================================
-# For information on the GNU Win32 project (Cygwin), and gcc
-#
-# http://www.cygwin.com, http://gcc.gnu.org
+# ============================================================================
 
 # ARCHITECTURE SECTION
 # Any specific options 

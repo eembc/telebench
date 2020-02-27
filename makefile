@@ -1,23 +1,11 @@
-#==============================================================================
-#$RCSfile: makefile,v $
+# ============================================================================
 #
-#   DESC : Make all app
+# Copyright (C) EEMBC(R) All Rights Reserved
 #
-# AUTHOR : Rick Foos, ECL, LLC 
+# This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+# Please refer to the license file (LICENSE.md) included with this code.
 #
-#    CVS : $Revision: 1.14 $
-#------------------------------------------------------------------------------
-# Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
-# Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
-#==============================================================================
-# Available commands:
-#
-# all - th regular, th lite build and run
-# all-lite - th lite build and run
-# all-regular - th regular build and run
-# rerun - run and results for lite and regular
-# clean - clean lite and regular for all toolchains
-# distclean - clean, and delete makerule dependency files.
+# ============================================================================
 
 
 # Override to v2 from command line (make VER=v2)

@@ -1,17 +1,11 @@
-::==============================================================================
-::$RCSfile: makelite.bat,v $
+:: ============================================================================
 ::
-::   DESC : TH Lite Clean,Build,Run on VC and GCC with Consolidated Log
+:: Copyright (C) EEMBC(R) All Rights Reserved
 ::
-:: AUTHOR : Rick Foos, ECL, LLC 
+:: This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+:: Please refer to the license file (LICENSE.md) included with this code.
 ::
-:: EEMBC : Technical Advisory Group (TechTAG)
-::
-::    CVS : $Revision: 1.13 $
-::------------------------------------------------------------------------------
-:: Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
-:: Benchmark Consortium (EEMBC), Inc. All Rights Reserved.
-::==============================================================================
+:: ============================================================================
 @echo off
 :: GCC
 @make VER=%VER% TOOLCHAIN=gcc LITE=_lite %1

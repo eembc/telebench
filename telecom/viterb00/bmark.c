@@ -1,101 +1,11 @@
-/*==============================================================================
- *$RCSfile: bmark.c,v $
+/**
  *
- *   DESC : This file contains the Test Main and other TH support functions
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- *  EEMBC : Telecom Subcommittee 
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- * AUTHOR : ECL, LLC
- *
- *    CVS : $Revision: 1.13 $
- *          $Date: 2002/08/09 21:47:01 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/telecom/viterb00/bmark.c,v $
- *
- *          
- * NOTE   :
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: bmark.c,v $
- * Revision 1.13  2002/08/09 21:47:01  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.12  2002/07/26 20:56:37  rick
- * Add harness.h for Application overrides
- *
- * Revision 1.11  2002/07/24 15:56:59  rick
- * Unique keys for all benchmarks, and generate tab delimited log files with column headers.
- *
- * Revision 1.10  2002/07/17 17:44:47  rick
- * Key outputdata files based on input filename
- *
- * Revision 1.9  2002/06/14 16:31:59  rick
- * Bug #184-#187: Remove compiler warnings
- *
- * Revision 1.8  2002/05/29 22:26:50  rick
- * Set recommended iterations with make
- *
- * Revision 1.7  2002/05/23 20:22:42  rick
- * Clear ansi warnings
- *
- * Revision 1.6  2002/05/22 17:55:28  rick
- * Replace assert.h with thassert.h, add assert functions to th lite.
- *
- * Revision 1.5  2002/04/25 21:56:52  rick
- * Bug #133: Viterbi/DATA_1 Out of range character
- *
- * Revision 1.4  2002/04/01 20:52:05  administrator
- * Apply Standard Comment Block
- *
- * Revision 1.3  2002/03/23 00:51:48  rick
- * Visual C++ Build fixes
- *
- * Revision 1.2  2002/03/12 18:31:06  rick
- * ITERATIONS, CRC_CHECK, NON_INTRUSIVE_CRC_CHECK, add standards headers
- *
- * Revision 1.1  2002/02/18 23:51:53  rick
- * Completed Telocom TH_Lite conversion
- *
- *
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 /*******************************************************************************
     Includes                                                                    

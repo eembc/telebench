@@ -1,81 +1,11 @@
-/*==============================================================================
- *$RCSfile: bmark_lite.c,v $
+/**
  *
- *   DESC : This file contains the Main and other TH_Lite support functions
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- *  EEMBC : Telecom Subcommittee 
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- * AUTHOR : ARM Ltd., ECL, LLC
- *
- *    CVS : $Revision: 1.15 $
- *          $Date: 2002/09/23 15:30:51 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/telecom/conven00/bmark_lite.c,v $
- *          
- * NOTE   :
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: bmark_lite.c,v $
- * Revision 1.15  2002/09/23 15:30:51  rick
- * Remove incomplete INTERMED define
- *
- * Revision 1.14  2002/08/09 21:46:37  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.13  2002/07/24 15:56:48  rick
- * Unique keys for all benchmarks, and generate tab delimited log files with column headers.
- *
- * Revision 1.12  2002/07/17 17:44:29  rick
- * Key outputdata files based on input filename
- *
- * Revision 1.11  2002/07/10 19:03:03  rick
- * Always initialize tcdef->CRC
- *
- * Revision 1.10  2002/05/29 22:26:45  rick
- * Set recommended iterations with make
- *
- * Revision 1.9  2002/05/23 20:22:35  rick
- * Clear ansi warnings
- *
- * Revision 1.8  2002/05/22 22:07:22  rick
- * Float support fixes
- *
- * Revision 1.7  2002/05/10 17:20:39  rick
- * Add al_main to API
- *
- * Revision 1.6  2002/04/26 19:22:50  rick
- * Add crc for DATA 1,2. Add BMDEBUG printing.
- *
- * Revision 1.5  2002/04/19 23:17:38  rick
- * Only include verify.h if FLOAT_SUPPORT
- *
- * Revision 1.4  2002/03/11 22:11:51  rick
- * ITERATIONS, CRC_CHECK, NON_INTRUSIVE TCDef Usage
- *
- * Revision 1.3  2002/02/23 22:20:03  rick
- * patrick fixes
- *
- * Revision 1.2  2002/02/22 20:46:12  rick
- * Fix d_union conflict in verify.h, thlib.c
- *
- * Revision 1.1  2002/02/19 00:44:26  rick
- * Add/Remove files from build test
- *
- *
- *
- *------------------------------------------------------------------------------
- *  Copyright 1998-2002 EEMBC
- *                                                                             
- *  This software is the property of the EEMBC and its member companies.  
- *                                                                             
- *  EEMBC MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS 
- *  SOFTWARE.  IN NO EVENT SHALL AMD BE LIABLE FOR INCIDENTAL OR CONSEQUENTIAL 
- *  DAMAGES IN CONNECTION WITH OR ARISING FROM THE FURNISHING, PERFORMANCE, OR 
- *  USE OF THIS SOFTWARE.                                                      
- * ===========================================================================*/
+ */
 
 #include "algo.h"
 #include "thlib.h"

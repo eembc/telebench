@@ -1,97 +1,11 @@
-/*==============================================================================
- *$RCSfile: thcfg.h,v $
+/**
  *
- *   DESC : Test Harness routines for benchmarks
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- * AUTHOR : ECL, LLC
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- *  EEMBC : Technical Advisory Group (TechTAG)
- *
- *    CVS : $Revision: 1.15 $
- *          $Date: 2002/08/06 21:57:40 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/techtag/th/x86/al/thcfg.h,v $
- *          
- * NOTE   :
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: thcfg.h,v $
- * Revision 1.15  2002/08/06 21:57:40  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.14  2002/07/31 22:14:24  rick
- * Add MAP_MALLOC_TO_TH trap when called by crt0
- *
- * Revision 1.13  2002/07/26 20:52:55  rick
- * Add harness.h for Application overrides
- *
- * Revision 1.12  2002/07/17 17:47:13  rick
- * Fix Heap warnings
- *
- * Revision 1.11  2002/07/11 22:50:28  rick
- * Fix lite Heap init, tcdef results init, and stig's suggestions
- *
- * Revision 1.10  2002/05/22 17:55:19  rick
- * Replace assert.h with thassert.h, add assert functions to th lite.
- *
- * Revision 1.9  2002/04/25 22:18:58  rick
- * Bug #72: Please change BIG_ENDIAN and LITTLE_ENDIAN to EEMBC_BIG_ENDIAN and EEMBC_LITTLE_ENDIAN
- *
- * Revision 1.8  2002/04/23 23:11:11  rick
- * Make default Heap 5mb for pktflow
- *
- * Revision 1.7  2002/04/23 18:33:56  rick
- * Match eembc_dt with Lite, remove stdinc.h
- *
- * Revision 1.6  2002/04/19 15:19:48  rick
- * Bug #154: Some preprocessors can't handle unterminated strings in # directives
- *
- * Revision 1.5  2002/03/25 18:43:14  rick
- * Change eembc_big and little endian to big/little
- *
- * Revision 1.4  2002/03/21 22:31:08  rick
- * Network Harness, and empty benchmark fixes
- *
- *
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 #if	!defined(THCFG_H)
 #define THCFG_H

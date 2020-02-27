@@ -1,109 +1,11 @@
-/*==============================================================================
- *$RCSfile: thlib.c,v $
+/**
  *
- *   DESC : TH_Lite Library Routines
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- *  EEMBC : EEMBC Technical Advisory Group (TechTAG)
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- * AUTHOR : ARM Ltd., ECL, LLC
- *
- *    CVS : $Revision: 1.26 $
- *          $Date: 2002/08/12 19:07:17 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/techtag/th_lite/src/thlib.c,v $
- *          
- * NOTE   :
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: thlib.c,v $
- * Revision 1.26  2002/08/12 19:07:17  rick
- * Rename cygwin toolchain to gcc
- *
- * Revision 1.25  2002/08/08 20:50:42  rick
- * Compile out command line -i (iterations) when CRC_CHECK enabled.
- *
- * Revision 1.24  2002/08/06 21:58:20  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.23  2002/07/26 20:53:16  rick
- * Add harness.h for Application overrides
- *
- * Revision 1.22  2002/07/19 19:29:24  rick
- * Replace eembc_id string with Benchmark ID
- *
- * Revision 1.21  2002/05/24 23:28:58  rick
- * Remove verify_float code if no float_support available
- *
- * Revision 1.20  2002/05/23 16:31:53  rick
- * Bug #169, #170, #172, #173: Char/assert fixes
- *
- * Revision 1.19  2002/05/22 17:55:26  rick
- * Replace assert.h with thassert.h, add assert functions to th lite.
- *
- * Revision 1.18  2002/05/21 19:18:33  rick
- * Abstract al_sprintf for compilers w/o vsprintf
- *
- * Revision 1.17  2002/05/15 15:04:17  rick
- * include stdio.h for vsprintf
- *
- * Revision 1.16  2002/05/14 19:12:22  rick
- * Add th_sprintf for bmdebug calls
- *
- * Revision 1.15  2002/04/23 21:37:42  rick
- * Bug #124: printf format
- *
- * Revision 1.14  2002/04/19 20:56:28  rick
- * Fix clock inconsistency with th regular vs. lite
- *
- * Revision 1.13  2002/04/12 21:31:25  rick
- * Remove cyclecount from th_report_results
- *
- * Revision 1.12  2002/04/03 23:18:46  rick
- * Clear warnings from gcc
- *
- * Revision 1.11  2002/03/18 21:15:09  rick
- * Add al_report, cyclecount, crc fix in iirflt, and pktflow.
- *
- *
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 #include "thlib.h"
 #include "thal.h"

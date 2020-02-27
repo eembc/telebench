@@ -1,112 +1,11 @@
-/*==============================================================================
- *$RCSfile: bmark.c,v $
+/**
  *
- *   DESC : This file contains the Test Main and other TH support functions
+ * Copyright (C) EEMBC(R) All Rights Reserved
  *
- * AUTHOR : RP
+ * This software is licensed with an Acceptable Use Agreement under Apache 2.0.
+ * Please refer to the license file (LICENSE.md) included with this code.
  *
- *  EEMBC : Telecom Subcommittee 
- *
- *    CVS : $Revision: 1.16 $
- *          $Date: 2002/08/09 21:46:34 $
- *          $Author: rick $
- *          $Source: d:/cvs/eembc2/telecom/autcor00/bmark.c,v $
- *          
- * NOTE   :
- *
- *------------------------------------------------------------------------------
- *
- * HISTORY :
- *
- * $Log: bmark.c,v $
- * Revision 1.16  2002/08/09 21:46:34  rick
- * Add NI CRC to TH Regular
- *
- * Revision 1.15  2002/07/24 15:56:46  rick
- * Unique keys for all benchmarks, and generate tab delimited log files with column headers.
- *
- * Revision 1.14  2002/07/17 17:44:28  rick
- * Key outputdata files based on input filename
- *
- * Revision 1.13  2002/05/29 22:26:43  rick
- * Set recommended iterations with make
- *
- * Revision 1.12  2002/05/23 20:22:23  rick
- * Clear ansi warnings
- *
- * Revision 1.11  2002/05/22 22:07:19  rick
- * Float support fixes
- *
- * Revision 1.10  2002/05/13 20:26:03  rick
- * Fix missing shifts in 16, and 32 bit CRC
- *
- * Revision 1.9  2002/04/25 19:54:22  rick
- * sprintf to th_sprintf
- *
- * Revision 1.8  2002/04/23 14:45:07  rick
- * Bug 51: ifdef BMDEBUG always true
- *
- * Revision 1.7  2002/04/19 23:17:37  rick
- * Only include verify.h if VERIFY_FLOAT && FLOAT_SUPPORT
- *
- * Revision 1.6  2002/04/01 20:51:22  administrator
- * Apply Standard Comment Block
- *
- * Revision 1.5  2002/03/23 00:51:47  rick
- * Visual C++ Build fixes
- *
- * Revision 1.4  2002/03/11 22:11:50  rick
- * ITERATIONS, CRC_CHECK, NON_INTRUSIVE TCDef Usage
- *
- * Revision 1.3  2002/02/22 20:46:11  rick
- * Fix d_union conflict in verify.h, thlib.c
- *
- * Revision 1.2  2002/02/18 23:51:52  rick
- * Completed Telocom TH_Lite conversion
- *
- *
- *   5/26/99    rlr
- *       Initial cleanup
- *
- *   1/20/00    arw & sl
- *       Correction of minor Sev 3 defects, cleanup
- *       Change datafile naming semantics to eliminate underscores
- *------------------------------------------------------------------------------
- * Copyright (c) 1998-2002 by the EDN Embedded Microprocessor 
- * Benchmark Consortium (EEMBC), Inc. 
- * 
- * All Rights Reserved. This is licensed program product and 
- * is owned by EEMBC. The Licensee understands and agrees that the 
- * Benchmarks licensed by EEMBC hereunder (including methods or concepts 
- * utilized therein) contain certain information that is confidential 
- * and proprietary which the Licensee expressly agrees to retain in the 
- * strictest confidence and to use only in conjunction with the Benchmarks 
- * pursuant to the terms of this Agreement. The Licensee further agrees 
- * to keep the source code and all related documentation confidential and 
- * not to disclose such source code and/or related documentation to any 
- * third party. The Licensee and any READER of this code is subject to 
- * either the EEMBC Member License Agreement and/or the EEMBC Licensee 
- * Agreement. 
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, EEMBC DISCLAIMS ALL 
- * WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
- * IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR 
- * PURPOSE, WITH REGARD TO THE BENCHMARKS AND THE ACCOMPANYING 
- * DOCUMENTATION. LICENSEE ACKNOWLEDGES AND AGREES THAT THERE ARE NO 
- * WARRANTIES, GUARANTIES, CONDITIONS, COVENANTS, OR REPRESENTATIONS BY 
- * EEMBC AS TO MARKETABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR OTHER 
- * ATTRIBUTES, WHETHER EXPRESS OR IMPLIED (IN LAW OR IN FACT), ORAL OR 
- * WRITTEN. 
- * 
- * Licensee hereby agrees by accessing this source code that all benchmark 
- * scores related to this code must be certified by ECL prior to publication 
- * in any media, form, distribution, or other means of conveyance of 
- * information subject to the terms of the EEMBC Member License Agreement 
- * and/or EEMBC Licensee Agreement. 
- * 
- * Other Copyright Notice (if any): 
- * 
- * For conditions of distribution and use, see the accompanying README file.
- * ===========================================================================*/
+ */
 
 #include "algo.h"
 #include "therror.h"
