@@ -132,7 +132,7 @@ static e_s16 test_buf[] = {
 #endif /* included data */ 
 
 #define T_INPUT  (MAX_DATA_SIZE*sizeof(e_s16))
-#define T_OUTPUT (1+(MAX_DATA_SIZE/16)*sizeof(e_s16))
+#define T_OUTPUT ((1+(MAX_DATA_SIZE/16))*sizeof(e_s16))
 #define	T_BSIZE	 (T_OUTPUT)
 
 static n_char* g_pchBuf = NULL ; 
